@@ -9,5 +9,5 @@ class User(db.Model):
     email = db.Column(db.String(255))
     username = db.Column(db.String(120))
     signup_method = db.Column(db.String(50))
-    is_email_verified = db.Column(db.Boolean, default=False)
+    is_email_verified = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
