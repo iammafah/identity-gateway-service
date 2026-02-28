@@ -22,15 +22,10 @@ def create_app():
         "https://iammafah.github.io"
     ]
 
-    CORS(
-        app,
-        resources={r"/auth/*": {"origins": allowed_origins}},
-        supports_credentials=True
-    )  # CORS config
-
+    CORS(app, origins=allowed_origins, supports_credentials=True)
     db.init_app(app)  # DB initialize
     migrate.init_app(app, db)  # migrations initialize
-
+    
     app.register_blueprint(auth_bp, url_prefix="/auth")  # auth routes register
 
     @app.route("/health")  # uptime monitoring endpoint
@@ -39,4 +34,4 @@ def create_app():
 
     return app  # app return
 
-app = create_app()  # app instance create
+app = create_app() # app instance create
